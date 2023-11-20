@@ -1,5 +1,5 @@
 {
-  "name": "saas-platform",
+  "name": "quill",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,7 +9,6 @@
     "lint": "next lint",
     "postinstall": "prisma generate"
   },
-  
   "dependencies": {
     "@hookform/resolvers": "^3.3.1",
     "@kinde-oss/kinde-auth-nextjs": "^1.8.18",
