@@ -162,7 +162,7 @@ const UploadButton = () => {
       </DialogTrigger>
 
       <DialogContent>
-        <UploadDropzone isSubscribed={true}/>
+        <UploadDropzone isSubscribed/>
       </DialogContent>
     </Dialog>
   );
