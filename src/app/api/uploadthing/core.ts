@@ -5,6 +5,7 @@ import { PDFLoader } from "langchain/document_loaders/fs/pdf";
 import { OpenAIEmbeddings } from "langchain/embeddings/openai";
 import { PineconeStore } from "langchain/vectorstores/pinecone";
 import { getPineconeClient } from "@/lib/pinecone";
+
 const f = createUploadthing();
 
 export const ourFileRouter = {
@@ -31,27 +32,29 @@ export const ourFileRouter = {
         const response = await fetch(
           `https://api.uploadthing.com/v1/convert?fileId=${createdFile.id}`
         );
-        const blob = await response.blob();
+        // const blob = await response.blob();
 
-        const loader = new PDFLoader(blob);
+        // const loader = new PDFLoader(blob);
 
-        const pageLevelDocs = await loader.load();
+        // const pageLevelDocs = await loader.load();
 
-        const pagesAmt = pageLevelDocs.length;
+        // const pagesAmt = pageLevelDocs.length;
 
-        const pinecone = await getPineconeClient();
-        const pineconeIndex = pinecone.Index("quill");
+        // const pinecone = await getPineconeClient();
+        // const pineconeIndex = pinecone.Index("superpowerpdf");
 
-        // vectorize and index entire document
+        // // vectorize and index entire document
 
-        const embeddings = new OpenAIEmbeddings({
-          openAIApiKey: process.env.OPENAI_API_KEY,
-        });
+        // const embeddings = new OpenAIEmbeddings({
+        //   openAIApiKey: process.env.OPENAI_API_KEY,
+        // });
 
-        await PineconeStore.fromDocuments(pageLevelDocs, embeddings, {
-          pineconeIndex,
-          namespace: createdFile.id,
-        });
+
+
+        // await PineconeStore.fromDocuments(pageLevelDocs, embeddings, {
+        //   pineconeIndex,
+        //   namespace: createdFile.id,
+        // });
         await db.file.update({
           data: {
             uploadStatus: "SUCCESS",
