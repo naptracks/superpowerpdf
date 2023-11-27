@@ -21,7 +21,13 @@ const Navbar = () => {
           <Link
             href='/'
             className='flex z-40 font-semibold'>
+              {
+                !user ? (
             <span>super power pdf.</span>
+
+                ) :
+                (<span>{user.given_name} {user.family_name}</span>)
+              }
           </Link>
 
           <MobileNav isAuth={!!user} />
