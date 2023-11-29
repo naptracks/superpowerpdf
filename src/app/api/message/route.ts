@@ -56,7 +56,7 @@ export const POST = async (req: NextRequest) => {
     embeddings,
     {
       pineconeIndex,
-      namespace: file.id,
+      // namespace: file.id,
     }
   )
 
@@ -82,6 +82,7 @@ export const POST = async (req: NextRequest) => {
     content: msg.text,
   }))
 
+  
   const response = await openai.chat.completions.create({
     model: "gpt-3.5-turbo",
     temperature: 0,
