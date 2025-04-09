@@ -15,6 +15,7 @@ import { useUploadThing } from '@/lib/uploadthing'
 import { useToast } from './ui/use-toast'
 import { trpc } from '@/app/_trpc/client'
 import { useRouter } from 'next/navigation'
+import { PLANS } from '@/config/stripe'
 
 const UploadDropzone = ({
   isSubscribed,
@@ -32,6 +33,9 @@ const UploadDropzone = ({
   const { startUpload } = useUploadThing(
     isSubscribed ? 'proPlanUploader' : 'freePlanUploader'
   )
+
+  const pdfWeightLimit = isSubscribed ? PLANS.find(p => p.name === 'Pro').pdfweightLimit : PLANS.find(p => p.name === 'Free').pdfweightLimit
+  const pagesPerPdf = isSubscribed ? PLANS.find(p => p.name === 'Pro').pagesPerPdf : PLANS.find(p => p.name === 'Free').pagesPerPdf
 
   const { mutate: startPolling } = trpc.getFile.useMutation(
     {
@@ -112,7 +116,7 @@ const UploadDropzone = ({
                   or drag and drop
                 </p>
                 <p className='text-xs text-zinc-500'>
-                  PDF (up to {isSubscribed ? "16" : "4"}MB)
+                  PDF (up to {pdfWeightLimit}MB and {pagesPerPdf} pages)
                 </p>
               </div>
 

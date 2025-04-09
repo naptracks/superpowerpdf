@@ -3,6 +3,7 @@ export const PLANS = [
     name: "Free",
     slug: "free",
     quota: 10,
+    pdfweightLimit: 4,
     pagesPerPdf: 10,
     price: {
       amount: 0,
@@ -16,6 +17,7 @@ export const PLANS = [
     name: "Pro",
     slug: "pro",
     quota: 50,
+    pdfweightLimit: 16,
     pagesPerPdf: 1000,
     price: {
       amount: 14,
